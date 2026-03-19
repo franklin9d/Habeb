@@ -1,9 +1,4 @@
-import { Hono } from 'hono'
-
-const app = new Hono()
-
-app.get('/', (c) => {
-  return c.html(`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -1026,30 +1021,4 @@ window.addEventListener('scroll',()=>{
 });
 </script>
 </body>
-</html>`)
-})
-
-// API routes
-app.get('/api/info', (c) => {
-  return c.json({
-    name: 'شركة حبيب الساعدي للتجارة العامة',
-    founded: 2017,
-    registration: '000007685',
-    headquarters: 'بغداد / النهضة - شارع الظلال',
-    phone: '6505',
-    whatsapp: '+964 773 033 1122',
-    branches: 7,
-    clients: '+4000',
-    social: {
-      facebook: 'https://www.facebook.com/habeebalsaede',
-      instagram: 'https://www.instagram.com/habeeb_alsaedi',
-      youtube: 'https://www.youtube.com/channel/UCKgqKQ1ep2d1wscOc2byZew'
-    },
-    app: {
-      ios: 'https://apps.apple.com/iq/app/حبيب-الساعدي/id1524682895',
-      android: 'https://play.google.com/store/apps/details?id=com.creativeprojects.habeeb'
-    }
-  })
-})
-
-export default app
+</html>
