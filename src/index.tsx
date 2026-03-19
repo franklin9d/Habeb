@@ -1,0 +1,1055 @@
+import { Hono } from 'hono'
+
+const app = new Hono()
+
+app.get('/', (c) => {
+  return c.html(`<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شركة حبيب الساعدي للتجارة العامة | أجهزة كهربائية وإلكترونية بالأقساط - العراق</title>
+<meta name="description" content="شركة حبيب الساعدي للتجارة العامة - تأسست 2017 في العراق. أجهزة كهربائية، إلكترونية، هواتف ذكية وأدوات منزلية بنظام الأقساط اليومي والشهري الميسر لجميع المواطنين. 7 فروع في بغداد والمحافظات.">
+<meta name="keywords" content="شركة حبيب الساعدي, تجارة عامة, أقساط, أجهزة كهربائية, هواتف ذكية, العراق, بغداد">
+<meta property="og:title" content="شركة حبيب الساعدي للتجارة العامة">
+<meta property="og:description" content="أجهزة كهربائية وإلكترونية وهواتف ذكية بنظام الأقساط الميسر لجميع المواطنين">
+<meta property="og:type" content="website">
+<link rel="icon" href="/static/logo.png" type="image/png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { 'tajawal': ['Tajawal', 'sans-serif'] },
+      colors: {
+        brand: { 50:'#f0fdf4',100:'#dcfce7',200:'#bbf7d0',300:'#86efac',400:'#4ade80',500:'#22c55e',600:'#16a34a',700:'#15803d',800:'#166534',900:'#14532d' },
+        dark: { 50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a',950:'#020617' }
+      }
+    }
+  }
+}
+</script>
+<style>
+*{font-family:'Tajawal',sans-serif;margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#fafbfc;overflow-x:hidden}
+.gradient-brand{background:linear-gradient(135deg,#15803d 0%,#22c55e 50%,#16a34a 100%)}
+.gradient-dark{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%)}
+.gradient-hero{background:linear-gradient(135deg,#0a1628 0%,#132743 40%,#0f172a 100%)}
+.text-gradient{background:linear-gradient(135deg,#22c55e,#4ade80);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.card-hover{transition:all .35s cubic-bezier(.4,0,.2,1)}
+.card-hover:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.1)}
+.fade-in{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.btn-primary{background:linear-gradient(135deg,#16a34a,#22c55e);transition:all .3s ease;position:relative;overflow:hidden}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(22,163,74,.4)}
+.btn-primary::after{content:'';position:absolute;top:0;right:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(255,255,255,.2),transparent);opacity:0;transition:opacity .3s}
+.btn-primary:hover::after{opacity:1}
+.btn-secondary{border:2px solid #22c55e;color:#22c55e;transition:all .3s ease}
+.btn-secondary:hover{background:#22c55e;color:#fff;transform:translateY(-2px)}
+.nav-link{position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-4px;right:0;width:0;height:2px;background:#22c55e;transition:width .3s}
+.nav-link:hover::after{width:100%}
+.stat-number{font-variant-numeric:tabular-nums}
+.hero-pattern{background-image:radial-gradient(rgba(34,197,94,.07) 1px,transparent 1px);background-size:30px 30px}
+.section-divider{height:1px;background:linear-gradient(to left,transparent,#e2e8f0,transparent)}
+.glow{box-shadow:0 0 40px rgba(34,197,94,.15)}
+.service-icon{width:64px;height:64px;display:flex;align-items:center;justify-content:center;border-radius:16px;font-size:24px;transition:all .3s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.float-anim{animation:float 3s ease-in-out infinite}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(34,197,94,.2)}50%{box-shadow:0 0 40px rgba(34,197,94,.4)}}
+.pulse-glow{animation:pulse-glow 2s ease-in-out infinite}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-answer.open{max-height:500px}
+.faq-chevron{transition:transform .3s}
+.faq-chevron.rotate{transform:rotate(180deg)}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#f1f5f9}
+::-webkit-scrollbar-thumb{background:#22c55e;border-radius:4px}
+.counter{font-variant-numeric:tabular-nums}
+@media(max-width:768px){
+  .hero-title{font-size:2rem!important;line-height:1.3!important}
+  .hero-sub{font-size:1rem!important}
+  .nav-desktop{display:none!important}
+  .mobile-menu-btn{display:flex!important}
+}
+@media(min-width:769px){
+  .mobile-menu-btn{display:none!important}
+  .mobile-menu{display:none!important}
+}
+</style>
+</head>
+<body class="font-tajawal text-dark-800">
+
+<!-- Top Bar -->
+<div class="gradient-dark text-white py-2.5">
+  <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between text-sm gap-2">
+    <div class="flex items-center gap-6 flex-wrap">
+      <span class="flex items-center gap-2 text-gray-300">
+        <i class="fas fa-phone-alt text-brand-400 text-xs"></i>
+        <span dir="ltr">6505</span>
+      </span>
+      <span class="flex items-center gap-2 text-gray-300">
+        <i class="fab fa-whatsapp text-brand-400 text-xs"></i>
+        <span dir="ltr">+964 773 033 1122</span>
+      </span>
+      <span class="flex items-center gap-2 text-gray-300">
+        <i class="fas fa-map-marker-alt text-brand-400 text-xs"></i>
+        بغداد - النهضة، شارع الظلال
+      </span>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="https://www.facebook.com/habeebalsaede" target="_blank" class="text-gray-400 hover:text-brand-400 transition-colors"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/habeeb_alsaedi" target="_blank" class="text-gray-400 hover:text-brand-400 transition-colors"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com/channel/UCKgqKQ1ep2d1wscOc2byZew" target="_blank" class="text-gray-400 hover:text-brand-400 transition-colors"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="header" class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <img src="/static/logo.png" alt="شعار شركة حبيب الساعدي" class="h-12 w-12 object-contain rounded-lg">
+      <div>
+        <h1 class="text-lg font-bold text-dark-900 leading-tight">حبيب الساعدي</h1>
+        <p class="text-xs text-dark-500">للتجارة العامة</p>
+      </div>
+    </a>
+    <nav class="nav-desktop flex items-center gap-8">
+      <a href="#home" class="nav-link text-dark-700 hover:text-brand-600 font-medium text-sm">الرئيسية</a>
+      <a href="#about" class="nav-link text-dark-700 hover:text-brand-600 font-medium text-sm">عن الشركة</a>
+      <a href="#services" class="nav-link text-dark-700 hover:text-brand-600 font-medium text-sm">خدماتنا</a>
+      <a href="#products" class="nav-link text-dark-700 hover:text-brand-600 font-medium text-sm">منتجاتنا</a>
+      <a href="#branches" class="nav-link text-dark-700 hover:text-brand-600 font-medium text-sm">الفروع</a>
+      <a href="#faq" class="nav-link text-dark-700 hover:text-brand-600 font-medium text-sm">الأسئلة</a>
+      <a href="#contact" class="btn-primary text-white px-5 py-2.5 rounded-xl text-sm font-bold inline-block">تواصل معنا</a>
+    </nav>
+    <button onclick="toggleMobile()" class="mobile-menu-btn items-center justify-center w-10 h-10 rounded-lg bg-gray-100 text-dark-700">
+      <i class="fas fa-bars text-lg" id="menuIcon"></i>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu hidden bg-white border-t border-gray-100 px-4 py-4">
+    <div class="flex flex-col gap-3">
+      <a href="#home" onclick="closeMobile()" class="text-dark-700 hover:text-brand-600 font-medium py-2 border-b border-gray-50">الرئيسية</a>
+      <a href="#about" onclick="closeMobile()" class="text-dark-700 hover:text-brand-600 font-medium py-2 border-b border-gray-50">عن الشركة</a>
+      <a href="#services" onclick="closeMobile()" class="text-dark-700 hover:text-brand-600 font-medium py-2 border-b border-gray-50">خدماتنا</a>
+      <a href="#products" onclick="closeMobile()" class="text-dark-700 hover:text-brand-600 font-medium py-2 border-b border-gray-50">منتجاتنا</a>
+      <a href="#branches" onclick="closeMobile()" class="text-dark-700 hover:text-brand-600 font-medium py-2 border-b border-gray-50">الفروع</a>
+      <a href="#faq" onclick="closeMobile()" class="text-dark-700 hover:text-brand-600 font-medium py-2 border-b border-gray-50">الأسئلة</a>
+      <a href="#contact" onclick="closeMobile()" class="btn-primary text-white px-5 py-3 rounded-xl text-sm font-bold text-center mt-2">تواصل معنا</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="gradient-hero hero-pattern relative overflow-hidden min-h-[90vh] flex items-center">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-20 left-20 w-72 h-72 bg-brand-500 rounded-full filter blur-[120px]"></div>
+    <div class="absolute bottom-20 right-20 w-96 h-96 bg-brand-400 rounded-full filter blur-[150px]"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 py-20 relative z-10 w-full">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <div class="inline-flex items-center gap-2 bg-brand-500/10 border border-brand-500/20 rounded-full px-4 py-2 mb-6">
+          <span class="w-2 h-2 bg-brand-400 rounded-full animate-pulse"></span>
+          <span class="text-brand-400 text-sm font-medium">منذ 2017 نخدم العراق</span>
+        </div>
+        <h2 class="hero-title text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          كل ما تحتاجه
+          <br>
+          <span class="text-gradient">بأقساط ميسّرة</span>
+          <br>
+          <span class="text-gray-300 text-3xl md:text-4xl lg:text-5xl">لجميع المواطنين</span>
+        </h2>
+        <p class="hero-sub text-lg text-gray-400 leading-relaxed mb-8 max-w-lg">
+          شركة حبيب الساعدي للتجارة العامة توفر لك أحدث الأجهزة الكهربائية والإلكترونية والهواتف الذكية والأدوات المنزلية بنظام التقسيط اليومي والشهري المريح. نوصلها لباب بيتك.
+        </p>
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="#contact" class="btn-primary text-white px-8 py-4 rounded-2xl font-bold text-lg inline-flex items-center gap-2">
+            <span>تواصل معنا الآن</span>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.creativeprojects.habeeb" target="_blank" class="btn-secondary px-8 py-4 rounded-2xl font-bold text-lg inline-flex items-center gap-2">
+            <i class="fas fa-download"></i>
+            <span>حمّل التطبيق</span>
+          </a>
+        </div>
+        <div class="flex items-center gap-8 flex-wrap">
+          <div class="text-center">
+            <div class="text-3xl font-black text-white counter" data-target="4000">0</div>
+            <div class="text-xs text-gray-500 mt-1">عميل يثق بنا</div>
+          </div>
+          <div class="w-px h-10 bg-gray-700"></div>
+          <div class="text-center">
+            <div class="text-3xl font-black text-white counter" data-target="7">0</div>
+            <div class="text-xs text-gray-500 mt-1">فروع في العراق</div>
+          </div>
+          <div class="w-px h-10 bg-gray-700"></div>
+          <div class="text-center">
+            <div class="text-3xl font-black text-white">+8</div>
+            <div class="text-xs text-gray-500 mt-1">سنوات خبرة</div>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2 flex justify-center">
+        <div class="relative">
+          <div class="absolute inset-0 bg-brand-500/20 rounded-3xl filter blur-[60px]"></div>
+          <img src="/static/banner.png" alt="شركة حبيب الساعدي للتجارة العامة - البيع بالتقسيط اليومي والشهري" class="relative z-10 rounded-3xl shadow-2xl max-w-full h-auto glow" style="max-height:420px">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<section class="bg-white shadow-lg relative z-20 -mt-1">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-x-reverse divide-gray-100">
+      <div class="py-8 text-center fade-in">
+        <div class="w-12 h-12 mx-auto bg-brand-50 rounded-2xl flex items-center justify-center mb-3">
+          <i class="fas fa-users text-brand-600 text-xl"></i>
+        </div>
+        <div class="text-2xl md:text-3xl font-black text-dark-900 counter" data-target="4000">0</div>
+        <div class="text-sm text-dark-500 mt-1">عميل</div>
+      </div>
+      <div class="py-8 text-center fade-in">
+        <div class="w-12 h-12 mx-auto bg-brand-50 rounded-2xl flex items-center justify-center mb-3">
+          <i class="fas fa-store text-brand-600 text-xl"></i>
+        </div>
+        <div class="text-2xl md:text-3xl font-black text-dark-900 counter" data-target="7">0</div>
+        <div class="text-sm text-dark-500 mt-1">فروع</div>
+      </div>
+      <div class="py-8 text-center fade-in">
+        <div class="w-12 h-12 mx-auto bg-brand-50 rounded-2xl flex items-center justify-center mb-3">
+          <i class="fas fa-calendar-check text-brand-600 text-xl"></i>
+        </div>
+        <div class="text-2xl md:text-3xl font-black text-dark-900">2017</div>
+        <div class="text-sm text-dark-500 mt-1">سنة التأسيس</div>
+      </div>
+      <div class="py-8 text-center fade-in">
+        <div class="w-12 h-12 mx-auto bg-brand-50 rounded-2xl flex items-center justify-center mb-3">
+          <i class="fas fa-headset text-brand-600 text-xl"></i>
+        </div>
+        <div class="text-2xl md:text-3xl font-black text-dark-900" dir="ltr">6505</div>
+        <div class="text-sm text-dark-500 mt-1">خدمة العملاء</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="fade-in">
+        <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 mb-4">
+          <i class="fas fa-building text-brand-600 text-xs"></i>
+          <span class="text-brand-700 text-sm font-semibold">من نحن</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-black text-dark-900 mb-6 leading-tight">
+          شركة عراقية رائدة
+          <br>
+          <span class="text-gradient">في خدمة المواطن</span>
+        </h2>
+        <p class="text-dark-600 leading-relaxed mb-6 text-lg">
+          تأسست شركة حبيب الساعدي للتجارة العامة عام 2017 بموجب الكتاب المرقم (000007685) الصادر من دائرة تسجيل الشركات العراقية، بإدارة الأستاذ حبيب سرحان حاتم الساعدي.
+        </p>
+        <p class="text-dark-600 leading-relaxed mb-6">
+          انطلقت الشركة من مكتب صغير في بغداد برؤية واضحة: تسهيل حياة المواطن العراقي عبر توفير الأجهزة الكهربائية والإلكترونية والهواتف الذكية والأدوات المنزلية بنظام الأقساط اليومية والشهرية الميسرة، لتنمو وتتوسع حتى أصبحت شركة مركزية بفروع متعددة في بغداد والمحافظات.
+        </p>
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-check text-brand-600 text-sm"></i>
+            </div>
+            <span class="text-dark-700 text-sm font-medium">شركة مسجلة رسمياً</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-check text-brand-600 text-sm"></i>
+            </div>
+            <span class="text-dark-700 text-sm font-medium">أقساط يومية وشهرية</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-check text-brand-600 text-sm"></i>
+            </div>
+            <span class="text-dark-700 text-sm font-medium">توصيل حتى باب البيت</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-check text-brand-600 text-sm"></i>
+            </div>
+            <span class="text-dark-700 text-sm font-medium">تطبيق إلكتروني متكامل</span>
+          </div>
+        </div>
+        <a href="#services" class="btn-primary text-white px-6 py-3 rounded-xl font-bold inline-flex items-center gap-2">
+          <span>اكتشف خدماتنا</span>
+          <i class="fas fa-arrow-left text-sm"></i>
+        </a>
+      </div>
+      <div class="fade-in relative">
+        <div class="bg-white rounded-3xl shadow-xl p-8 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1 gradient-brand"></div>
+          <div class="text-center mb-6">
+            <img src="/static/logo.png" alt="شعار حبيب الساعدي" class="h-24 w-24 mx-auto object-contain mb-4">
+            <h3 class="text-xl font-bold text-dark-900">رؤيتنا</h3>
+          </div>
+          <p class="text-dark-600 text-center leading-relaxed mb-8">
+            أن نكون الخيار الأول للمواطن العراقي في توفير احتياجاته من الأجهزة والمنتجات بأسهل الطرق وأيسر الأقساط، مع ضمان جودة المنتج وراحة العميل.
+          </p>
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="bg-gray-50 rounded-2xl p-4">
+              <i class="fas fa-shield-alt text-brand-500 text-2xl mb-2"></i>
+              <div class="text-xs text-dark-600 font-medium">ثقة</div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-4">
+              <i class="fas fa-hand-holding-heart text-brand-500 text-2xl mb-2"></i>
+              <div class="text-xs text-dark-600 font-medium">تسهيل</div>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-4">
+              <i class="fas fa-chart-line text-brand-500 text-2xl mb-2"></i>
+              <div class="text-xs text-dark-600 font-medium">نمو</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- Services Section -->
+<section id="services" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 mb-4">
+        <i class="fas fa-cogs text-brand-600 text-xs"></i>
+        <span class="text-brand-700 text-sm font-semibold">خدماتنا</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-dark-900 mb-4">ما نقدمه لعملائنا</h2>
+      <p class="text-dark-500 max-w-2xl mx-auto text-lg">نوفر مجموعة شاملة من الخدمات التي تهدف لتسهيل حياة المواطن العراقي وتلبية احتياجاته اليومية</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Service 1 -->
+      <div class="card-hover bg-white border border-gray-100 rounded-3xl p-8 fade-in">
+        <div class="service-icon bg-green-50 text-brand-600 mb-5">
+          <i class="fas fa-money-bill-wave"></i>
+        </div>
+        <h3 class="text-xl font-bold text-dark-900 mb-3">البيع بالتقسيط</h3>
+        <p class="text-dark-500 leading-relaxed">نظام أقساط يومية وشهرية ميسرة تناسب جميع المواطنين، بدون تعقيدات أو شروط صعبة. ادفع براحتك واستلم منتجك فوراً.</p>
+      </div>
+      <!-- Service 2 -->
+      <div class="card-hover bg-white border border-gray-100 rounded-3xl p-8 fade-in">
+        <div class="service-icon bg-blue-50 text-blue-600 mb-5">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3 class="text-xl font-bold text-dark-900 mb-3">الهواتف الذكية</h3>
+        <p class="text-dark-500 leading-relaxed">أحدث الهواتف الذكية من أشهر العلامات التجارية بضمان حقيقي وأقساط تبدأ من مبالغ بسيطة يومياً.</p>
+      </div>
+      <!-- Service 3 -->
+      <div class="card-hover bg-white border border-gray-100 rounded-3xl p-8 fade-in">
+        <div class="service-icon bg-purple-50 text-purple-600 mb-5">
+          <i class="fas fa-tv"></i>
+        </div>
+        <h3 class="text-xl font-bold text-dark-900 mb-3">الأجهزة الكهربائية</h3>
+        <p class="text-dark-500 leading-relaxed">سبلتات، ثلاجات، غسالات، وجميع الأجهزة الكهربائية التي يحتاجها منزلك بأفضل الماركات والأسعار.</p>
+      </div>
+      <!-- Service 4 -->
+      <div class="card-hover bg-white border border-gray-100 rounded-3xl p-8 fade-in">
+        <div class="service-icon bg-orange-50 text-orange-600 mb-5">
+          <i class="fas fa-laptop"></i>
+        </div>
+        <h3 class="text-xl font-bold text-dark-900 mb-3">الأجهزة الإلكترونية</h3>
+        <p class="text-dark-500 leading-relaxed">لابتوبات، أجهزة ألعاب مثل PlayStation، شاشات، وجميع المنتجات الإلكترونية الحديثة بتقسيط مريح.</p>
+      </div>
+      <!-- Service 5 -->
+      <div class="card-hover bg-white border border-gray-100 rounded-3xl p-8 fade-in">
+        <div class="service-icon bg-teal-50 text-teal-600 mb-5">
+          <i class="fas fa-home"></i>
+        </div>
+        <h3 class="text-xl font-bold text-dark-900 mb-3">الأدوات المنزلية</h3>
+        <p class="text-dark-500 leading-relaxed">تجهيز المنازل والمجمعات السكنية بكل ما تحتاجه من أدوات ومستلزمات منزلية بجودة عالية وأسعار منافسة.</p>
+      </div>
+      <!-- Service 6 -->
+      <div class="card-hover bg-white border border-gray-100 rounded-3xl p-8 fade-in">
+        <div class="service-icon bg-red-50 text-red-600 mb-5">
+          <i class="fas fa-store"></i>
+        </div>
+        <h3 class="text-xl font-bold text-dark-900 mb-3">تجهيز المشاريع</h3>
+        <p class="text-dark-500 leading-relaxed">نوفر لأصحاب المشاريع والمحلات التجارية جميع الأجهزة والمواد الأولية بالتقسيط المريح لبدء مشروعك بسهولة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products Section -->
+<section id="products" class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 mb-4">
+        <i class="fas fa-box-open text-brand-600 text-xs"></i>
+        <span class="text-brand-700 text-sm font-semibold">منتجاتنا</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-dark-900 mb-4">أبرز المنتجات المتوفرة</h2>
+      <p class="text-dark-500 max-w-2xl mx-auto text-lg">تشكيلة واسعة من المنتجات من أفضل العلامات التجارية العالمية بأقساط تناسب الجميع</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div class="card-hover bg-white rounded-2xl p-6 text-center fade-in border border-gray-100">
+        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fas fa-snowflake text-blue-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-1">سبلتات</h3>
+        <p class="text-sm text-dark-500">تبريد وتدفئة</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-6 text-center fade-in border border-gray-100">
+        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fas fa-mobile-alt text-purple-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-1">هواتف ذكية</h3>
+        <p class="text-sm text-dark-500">أحدث الإصدارات</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-6 text-center fade-in border border-gray-100">
+        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-green-50 to-green-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fas fa-tv text-green-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-1">شاشات</h3>
+        <p class="text-sm text-dark-500">عالية الوضوح</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-6 text-center fade-in border border-gray-100">
+        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-red-50 to-red-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fas fa-gamepad text-red-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-1">أجهزة ألعاب</h3>
+        <p class="text-sm text-dark-500">PlayStation وغيرها</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-6 text-center fade-in border border-gray-100">
+        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fas fa-laptop text-cyan-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-1">لابتوبات</h3>
+        <p class="text-sm text-dark-500">للعمل والدراسة</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-6 text-center fade-in border border-gray-100">
+        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fas fa-blender text-yellow-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-1">أدوات مطبخ</h3>
+        <p class="text-sm text-dark-500">كهربائية ومنزلية</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-6 text-center fade-in border border-gray-100">
+        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fas fa-tshirt text-indigo-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-1">غسالات</h3>
+        <p class="text-sm text-dark-500">أوتوماتيك وعادية</p>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-6 text-center fade-in border border-gray-100">
+        <div class="w-16 h-16 mx-auto bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fas fa-box text-pink-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-1">ثلاجات</h3>
+        <p class="text-sm text-dark-500">بأحجام متنوعة</p>
+      </div>
+    </div>
+    <div class="text-center mt-12 fade-in">
+      <div class="inline-flex items-center gap-3 bg-brand-50 border border-brand-200 rounded-2xl px-6 py-4">
+        <i class="fas fa-info-circle text-brand-600"></i>
+        <span class="text-brand-800 font-medium">جميع المنتجات متوفرة بنظام الأقساط اليومية والشهرية لجميع المواطنين</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Us Section -->
+<section class="py-20 gradient-dark relative overflow-hidden">
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-500 rounded-full filter blur-[150px]"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 relative z-10">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-flex items-center gap-2 bg-brand-500/10 border border-brand-500/20 rounded-full px-4 py-1.5 mb-4">
+        <i class="fas fa-star text-brand-400 text-xs"></i>
+        <span class="text-brand-400 text-sm font-semibold">لماذا نحن</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-4">ما يميز شركة حبيب الساعدي</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg">نؤمن بأن كل مواطن يستحق الحصول على ما يحتاجه بسهولة ويسر</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 fade-in">
+        <div class="w-14 h-14 bg-brand-500/20 rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-hand-holding-usd text-brand-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">أقساط بدون تعقيد</h3>
+        <p class="text-gray-400 leading-relaxed">نوفر نظام تقسيط مرن يناسب الجميع بأقساط يومية تبدأ من مبالغ بسيطة، مع استلام فوري عن طريق مندوبينا.</p>
+      </div>
+      <div class="card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 fade-in">
+        <div class="w-14 h-14 bg-brand-500/20 rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-truck text-brand-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">توصيل مجاني</h3>
+        <p class="text-gray-400 leading-relaxed">نوصل المنتجات لباب بيتك أو محلك التجاري عبر مندوبينا المنتشرين في بغداد والمحافظات.</p>
+      </div>
+      <div class="card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 fade-in">
+        <div class="w-14 h-14 bg-brand-500/20 rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-shield-alt text-brand-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">ضمان حقيقي</h3>
+        <p class="text-gray-400 leading-relaxed">جميع منتجاتنا مكفولة بضمان حقيقي، مع خدمة ما بعد البيع ودعم فني متواصل لراحتك.</p>
+      </div>
+      <div class="card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 fade-in">
+        <div class="w-14 h-14 bg-brand-500/20 rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-map-marked-alt text-brand-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">انتشار واسع</h3>
+        <p class="text-gray-400 leading-relaxed">7 فروع موزعة في بغداد والمحافظات العراقية لخدمتك أينما كنت بنفس مستوى الجودة والاهتمام.</p>
+      </div>
+      <div class="card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 fade-in">
+        <div class="w-14 h-14 bg-brand-500/20 rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-mobile-alt text-brand-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">تطبيق ذكي</h3>
+        <p class="text-gray-400 leading-relaxed">تطبيق حبيب الساعدي للتسوق الإلكتروني متوفر على App Store و Google Play. تسوّق واطلب من أي مكان.</p>
+      </div>
+      <div class="card-hover bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 fade-in">
+        <div class="w-14 h-14 bg-brand-500/20 rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-users-cog text-brand-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">خدمة عملاء مميزة</h3>
+        <p class="text-gray-400 leading-relaxed">فريق متخصص جاهز لمساعدتك على الرقم المختصر 6505 أو عبر الواتساب في أي وقت تحتاجنا.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Branches Section -->
+<section id="branches" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 mb-4">
+        <i class="fas fa-map-marker-alt text-brand-600 text-xs"></i>
+        <span class="text-brand-700 text-sm font-semibold">فروعنا</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-dark-900 mb-4">منتشرون في خدمتكم</h2>
+      <p class="text-dark-500 max-w-2xl mx-auto text-lg">بحسب المصادر المتاحة، تمتلك الشركة فروعاً في بغداد وعدد من المحافظات العراقية</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-6 fade-in">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-map-pin text-brand-600"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-dark-900">بغداد - النهضة</h3>
+            <p class="text-sm text-dark-500">المقر الرئيسي - شارع الظلال</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-6 fade-in">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-map-pin text-brand-600"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-dark-900">بغداد - الأعظمية</h3>
+            <p class="text-sm text-dark-500">فرع بغداد</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-6 fade-in">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-map-pin text-brand-600"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-dark-900">بغداد - المحمودية</h3>
+            <p class="text-sm text-dark-500">فرع بغداد</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-6 fade-in">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-map-pin text-brand-600"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-dark-900">كربلاء المقدسة</h3>
+            <p class="text-sm text-dark-500">فرع المحافظة</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-6 fade-in">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-map-pin text-brand-600"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-dark-900">النجف الأشرف</h3>
+            <p class="text-sm text-dark-500">فرع المحافظة</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-6 fade-in">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center">
+            <i class="fas fa-map-pin text-brand-600"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-dark-900">فروع أخرى</h3>
+            <p class="text-sm text-dark-500">بحسب المصادر المتاحة، الشركة تخدم محافظات إضافية</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-10 fade-in">
+      <p class="text-dark-500 text-sm">للاستفسار عن أقرب فرع لك، تواصل مع خدمة العملاء على الرقم <strong dir="ltr">6505</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- Trust / CTA Section -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="gradient-brand rounded-3xl p-10 md:p-16 text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute -top-20 -right-20 w-72 h-72 bg-white rounded-full"></div>
+        <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-white rounded-full"></div>
+      </div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-6">جاهز تبدأ مشروعك أو تجهز بيتك؟</h2>
+        <p class="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+          ما تحتاج رأس مال كبير ولا تشيل هم الدفع. تواصل معنا ونوفرلك كل اللي تحتاجه بالتقسيط المريح واستلمه من باب بيتك.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://wa.me/9647730331122" target="_blank" class="bg-white text-brand-700 px-8 py-4 rounded-2xl font-bold text-lg inline-flex items-center gap-3 hover:shadow-lg transition-all hover:-translate-y-1">
+            <i class="fab fa-whatsapp text-2xl"></i>
+            <span>تواصل واتساب</span>
+          </a>
+          <a href="tel:6505" class="bg-white/20 text-white border-2 border-white/40 px-8 py-4 rounded-2xl font-bold text-lg inline-flex items-center gap-3 hover:bg-white/30 transition-all hover:-translate-y-1">
+            <i class="fas fa-phone-alt text-xl"></i>
+            <span>اتصل بـ 6505</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 mb-4">
+        <i class="fas fa-comment-dots text-brand-600 text-xs"></i>
+        <span class="text-brand-700 text-sm font-semibold">ثقة عملائنا</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-dark-900 mb-4">قصة نجاح مستمرة</h2>
+      <p class="text-dark-500 max-w-2xl mx-auto text-lg">أكثر من 73 ألف متابع على صفحتنا في Facebook وآلاف العملاء الراضين في عموم العراق</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card-hover bg-gray-50 border border-gray-100 rounded-3xl p-8 fade-in">
+        <div class="flex items-center gap-1 mb-4">
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+        </div>
+        <p class="text-dark-600 leading-relaxed mb-6">خدمة ممتازة وتوصيل سريع. اشتريت سبلت بالتقسيط والأقساط مريحة جداً. شكراً لشركة حبيب الساعدي.</p>
+        <div class="flex items-center gap-3 border-t border-gray-200 pt-4">
+          <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center">
+            <i class="fas fa-user text-brand-600 text-sm"></i>
+          </div>
+          <div>
+            <div class="font-bold text-dark-900 text-sm">عميل من بغداد</div>
+            <div class="text-xs text-dark-500">بحسب تقييمات صفحة Facebook</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-hover bg-gray-50 border border-gray-100 rounded-3xl p-8 fade-in">
+        <div class="flex items-center gap-1 mb-4">
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+        </div>
+        <p class="text-dark-600 leading-relaxed mb-6">جهزت محلي التجاري بالكامل من عندهم. وفروا لي كل شي بالتقسيط وبدون تعقيدات. أنصح بيهم بقوة.</p>
+        <div class="flex items-center gap-3 border-t border-gray-200 pt-4">
+          <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center">
+            <i class="fas fa-user text-brand-600 text-sm"></i>
+          </div>
+          <div>
+            <div class="font-bold text-dark-900 text-sm">صاحب مشروع</div>
+            <div class="text-xs text-dark-500">بحسب تقييمات صفحة Facebook</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-hover bg-gray-50 border border-gray-100 rounded-3xl p-8 fade-in">
+        <div class="flex items-center gap-1 mb-4">
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star-half-alt text-yellow-400"></i>
+        </div>
+        <p class="text-dark-600 leading-relaxed mb-6">اشتريت موبايل من التطبيق والتجربة كانت سهلة جداً. القسط اليومي بسيط والتوصيل كان سريع. شركة محترمة.</p>
+        <div class="flex items-center gap-3 border-t border-gray-200 pt-4">
+          <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center">
+            <i class="fas fa-user text-brand-600 text-sm"></i>
+          </div>
+          <div>
+            <div class="font-bold text-dark-900 text-sm">عميل من كربلاء</div>
+            <div class="text-xs text-dark-500">بحسب تقييمات صفحة Facebook</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-20 bg-gray-50">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 mb-4">
+        <i class="fas fa-question-circle text-brand-600 text-xs"></i>
+        <span class="text-brand-700 text-sm font-semibold">الأسئلة الشائعة</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-dark-900 mb-4">أسئلة يتكرر طرحها</h2>
+    </div>
+    <div class="space-y-4">
+      <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden fade-in">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right">
+          <span class="font-bold text-dark-900 text-lg">كيف يعمل نظام التقسيط؟</span>
+          <i class="fas fa-chevron-down text-brand-600 faq-chevron"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-dark-600 leading-relaxed">
+            نظام التقسيط في شركة حبيب الساعدي بسيط ومريح. تختار المنتج الذي تريده، ثم تتفق على نظام الدفع (يومي أو شهري) بأقساط ميسرة تناسب ميزانيتك. يتم استلام الأقساط من قبل مندوبينا من باب بيتك أو محلك.
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden fade-in">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right">
+          <span class="font-bold text-dark-900 text-lg">هل الخدمة متاحة لجميع المواطنين؟</span>
+          <i class="fas fa-chevron-down text-brand-600 faq-chevron"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-dark-600 leading-relaxed">
+            نعم، خدمة البيع بالتقسيط متاحة لجميع المواطنين العراقيين في مناطق تغطية فروعنا. يمكنك التواصل معنا على الرقم 6505 لمعرفة التفاصيل والشروط.
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden fade-in">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right">
+          <span class="font-bold text-dark-900 text-lg">كيف أتواصل مع الشركة؟</span>
+          <i class="fas fa-chevron-down text-brand-600 faq-chevron"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-dark-600 leading-relaxed">
+            يمكنك التواصل معنا عبر عدة طرق: الرقم المختصر 6505 لخدمة العملاء، أو عبر الواتساب على الرقم 07730331122، أو عبر تطبيق حبيب الساعدي المتوفر على App Store و Google Play، أو زيارة أقرب فرع لك.
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden fade-in">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right">
+          <span class="font-bold text-dark-900 text-lg">هل تقدمون خدمة تجهيز المشاريع؟</span>
+          <i class="fas fa-chevron-down text-brand-600 faq-chevron"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-dark-600 leading-relaxed">
+            نعم، نوفر لأصحاب المشاريع والمحلات التجارية جميع الأجهزة والمواد الأولية اللازمة بنظام التقسيط المريح. عليك الفكرة وعلينا التجهيز، بدون الحاجة لرأس مال كبير.
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden fade-in">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right">
+          <span class="font-bold text-dark-900 text-lg">هل المنتجات مكفولة بضمان؟</span>
+          <i class="fas fa-chevron-down text-brand-600 faq-chevron"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-dark-600 leading-relaxed">
+            بالتأكيد، جميع المنتجات المباعة من خلال الشركة مكفولة بضمان. مدة الضمان تختلف حسب نوع المنتج والعلامة التجارية. للتفاصيل، تواصل مع فريق خدمة العملاء.
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden fade-in">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-right">
+          <span class="font-bold text-dark-900 text-lg">كيف أحمّل تطبيق حبيب الساعدي؟</span>
+          <i class="fas fa-chevron-down text-brand-600 faq-chevron"></i>
+        </button>
+        <div class="faq-answer">
+          <div class="px-6 pb-6 text-dark-600 leading-relaxed">
+            التطبيق متوفر للتحميل المجاني على متجر App Store لأجهزة iPhone ومتجر Google Play لأجهزة Android. ابحث عن "حبيب الساعدي" وحمّل التطبيق لتتسوق بسهولة من أي مكان.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-16 fade-in">
+      <div class="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-4 py-1.5 mb-4">
+        <i class="fas fa-envelope text-brand-600 text-xs"></i>
+        <span class="text-brand-700 text-sm font-semibold">تواصل معنا</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-dark-900 mb-4">نحن هنا لخدمتك</h2>
+      <p class="text-dark-500 max-w-2xl mx-auto text-lg">تواصل معنا بالطريقة التي تناسبك وسنكون سعداء بمساعدتك</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <a href="tel:6505" class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-8 text-center fade-in block">
+        <div class="w-16 h-16 mx-auto bg-brand-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fas fa-phone-alt text-brand-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-2">خدمة العملاء</h3>
+        <p class="text-brand-600 font-bold text-xl" dir="ltr">6505</p>
+      </a>
+      <a href="https://wa.me/9647730331122" target="_blank" class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-8 text-center fade-in block">
+        <div class="w-16 h-16 mx-auto bg-green-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fab fa-whatsapp text-green-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-2">واتساب</h3>
+        <p class="text-green-600 font-bold" dir="ltr">+964 773 033 1122</p>
+      </a>
+      <a href="https://www.facebook.com/habeebalsaede" target="_blank" class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-8 text-center fade-in block">
+        <div class="w-16 h-16 mx-auto bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fab fa-facebook-f text-blue-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-2">فيسبوك</h3>
+        <p class="text-blue-600 font-bold text-sm">@habeebalsaede</p>
+      </a>
+      <a href="https://www.instagram.com/habeeb_alsaedi" target="_blank" class="card-hover bg-gray-50 border border-gray-100 rounded-2xl p-8 text-center fade-in block">
+        <div class="w-16 h-16 mx-auto bg-pink-100 rounded-2xl flex items-center justify-center mb-4">
+          <i class="fab fa-instagram text-pink-600 text-2xl"></i>
+        </div>
+        <h3 class="font-bold text-dark-900 mb-2">انستغرام</h3>
+        <p class="text-pink-600 font-bold text-sm">@habeeb_alsaedi</p>
+      </a>
+    </div>
+    <!-- App Download -->
+    <div class="mt-12 bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100 fade-in">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="flex-1 text-center md:text-right">
+          <h3 class="text-2xl font-black text-dark-900 mb-3">حمّل تطبيق حبيب الساعدي</h3>
+          <p class="text-dark-500 mb-6">تسوّق واطلب من أي مكان. تطبيق متكامل للتسوق الإلكتروني والقروض والأقساط الميسرة.</p>
+          <div class="flex flex-wrap justify-center md:justify-start gap-4">
+            <a href="https://apps.apple.com/iq/app/%D8%AD%D8%A8%D9%8A%D8%A8-%D8%A7%D9%84%D8%B3%D8%A7%D8%B9%D8%AF%D9%8A/id1524682895" target="_blank" class="bg-dark-900 text-white px-6 py-3 rounded-xl inline-flex items-center gap-3 hover:bg-dark-800 transition-colors">
+              <i class="fab fa-apple text-2xl"></i>
+              <div class="text-right">
+                <div class="text-[10px] text-gray-400">حمّل من</div>
+                <div class="font-bold text-sm">App Store</div>
+              </div>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.creativeprojects.habeeb" target="_blank" class="bg-dark-900 text-white px-6 py-3 rounded-xl inline-flex items-center gap-3 hover:bg-dark-800 transition-colors">
+              <i class="fab fa-google-play text-2xl"></i>
+              <div class="text-right">
+                <div class="text-[10px] text-gray-400">حمّل من</div>
+                <div class="font-bold text-sm">Google Play</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="flex-shrink-0">
+          <div class="w-48 h-48 bg-brand-50 rounded-3xl flex items-center justify-center">
+            <img src="/static/logo.png" alt="تطبيق حبيب الساعدي" class="w-28 h-28 object-contain">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="gradient-dark text-white pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <!-- Company Info -->
+      <div>
+        <div class="flex items-center gap-3 mb-6">
+          <img src="/static/logo.png" alt="شعار حبيب الساعدي" class="h-12 w-12 object-contain rounded-lg">
+          <div>
+            <h3 class="font-bold text-lg">حبيب الساعدي</h3>
+            <p class="text-xs text-gray-400">للتجارة العامة</p>
+          </div>
+        </div>
+        <p class="text-gray-400 leading-relaxed text-sm mb-6">
+          شركة عراقية تأسست عام 2017 لتسهيل حياة المواطن عبر توفير الأجهزة والمنتجات بنظام الأقساط الميسرة.
+        </p>
+        <div class="flex items-center gap-3">
+          <a href="https://www.facebook.com/habeebalsaede" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-brand-500 transition-colors">
+            <i class="fab fa-facebook-f text-sm"></i>
+          </a>
+          <a href="https://www.instagram.com/habeeb_alsaedi" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-brand-500 transition-colors">
+            <i class="fab fa-instagram text-sm"></i>
+          </a>
+          <a href="https://www.youtube.com/channel/UCKgqKQ1ep2d1wscOc2byZew" target="_blank" class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-brand-500 transition-colors">
+            <i class="fab fa-youtube text-sm"></i>
+          </a>
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h3 class="font-bold text-lg mb-6">روابط سريعة</h3>
+        <div class="space-y-3">
+          <a href="#home" class="block text-gray-400 hover:text-brand-400 transition-colors text-sm">الرئيسية</a>
+          <a href="#about" class="block text-gray-400 hover:text-brand-400 transition-colors text-sm">عن الشركة</a>
+          <a href="#services" class="block text-gray-400 hover:text-brand-400 transition-colors text-sm">خدماتنا</a>
+          <a href="#products" class="block text-gray-400 hover:text-brand-400 transition-colors text-sm">منتجاتنا</a>
+          <a href="#branches" class="block text-gray-400 hover:text-brand-400 transition-colors text-sm">فروعنا</a>
+          <a href="#faq" class="block text-gray-400 hover:text-brand-400 transition-colors text-sm">الأسئلة الشائعة</a>
+        </div>
+      </div>
+      <!-- Services -->
+      <div>
+        <h3 class="font-bold text-lg mb-6">خدماتنا</h3>
+        <div class="space-y-3">
+          <p class="text-gray-400 text-sm">البيع بالتقسيط اليومي</p>
+          <p class="text-gray-400 text-sm">البيع بالتقسيط الشهري</p>
+          <p class="text-gray-400 text-sm">الأجهزة الكهربائية</p>
+          <p class="text-gray-400 text-sm">الهواتف الذكية</p>
+          <p class="text-gray-400 text-sm">تجهيز المشاريع</p>
+          <p class="text-gray-400 text-sm">التسوق الإلكتروني</p>
+        </div>
+      </div>
+      <!-- Contact -->
+      <div>
+        <h3 class="font-bold text-lg mb-6">تواصل معنا</h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt text-brand-400 mt-1"></i>
+            <span class="text-gray-400 text-sm">بغداد / النهضة - شارع الظلال</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-phone-alt text-brand-400 mt-1"></i>
+            <span class="text-gray-400 text-sm" dir="ltr">6505</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fab fa-whatsapp text-brand-400 mt-1"></i>
+            <span class="text-gray-400 text-sm" dir="ltr">+964 773 033 1122</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-clock text-brand-400 mt-1"></i>
+            <span class="text-gray-400 text-sm">السبت - الخميس</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray-500 text-sm">
+        جميع الحقوق محفوظة لشركة حبيب الساعدي للتجارة العامة &copy; 2017 - 2026
+      </p>
+      <p class="text-gray-600 text-xs">
+        شركة مسجلة لدى دائرة تسجيل الشركات العراقية - الكتاب المرقم (000007685)
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 left-6 w-12 h-12 bg-brand-600 text-white rounded-2xl shadow-lg flex items-center justify-center opacity-0 translate-y-4 transition-all duration-300 hover:bg-brand-700 z-50" style="pointer-events:none">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+// Mobile menu
+function toggleMobile(){
+  const m=document.getElementById('mobileMenu');
+  const i=document.getElementById('menuIcon');
+  m.classList.toggle('hidden');
+  i.className=m.classList.contains('hidden')?'fas fa-bars text-lg':'fas fa-times text-lg';
+}
+function closeMobile(){
+  document.getElementById('mobileMenu').classList.add('hidden');
+  document.getElementById('menuIcon').className='fas fa-bars text-lg';
+}
+
+// FAQ toggle
+function toggleFaq(btn){
+  const answer=btn.nextElementSibling;
+  const chevron=btn.querySelector('.faq-chevron');
+  answer.classList.toggle('open');
+  chevron.classList.toggle('rotate');
+}
+
+// Fade-in observer
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Counter animation
+function animateCounters(){
+  document.querySelectorAll('.counter').forEach(c=>{
+    const target=+c.getAttribute('data-target');
+    if(!target||c.dataset.done)return;
+    c.dataset.done='1';
+    const dur=2000;
+    const step=target/dur*16;
+    let current=0;
+    const timer=setInterval(()=>{
+      current+=step;
+      if(current>=target){current=target;clearInterval(timer)}
+      if(target>=1000){
+        c.textContent='+'+Math.floor(current).toLocaleString('en-US');
+      }else{
+        c.textContent=Math.floor(current);
+      }
+    },16);
+  });
+}
+const counterObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){animateCounters();counterObs.unobserve(e.target)}})
+},{threshold:0.3});
+document.querySelectorAll('.counter').forEach(el=>counterObs.observe(el));
+
+// Back to top
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('backToTop');
+  if(window.scrollY>500){btn.style.opacity='1';btn.style.transform='translateY(0)';btn.style.pointerEvents='auto'}
+  else{btn.style.opacity='0';btn.style.transform='translateY(1rem)';btn.style.pointerEvents='none'}
+});
+
+// Header scroll effect
+window.addEventListener('scroll',()=>{
+  const h=document.getElementById('header');
+  if(window.scrollY>80){h.classList.add('shadow-md');h.classList.remove('shadow-sm')}
+  else{h.classList.remove('shadow-md');h.classList.add('shadow-sm')}
+});
+</script>
+</body>
+</html>`)
+})
+
+// API routes
+app.get('/api/info', (c) => {
+  return c.json({
+    name: 'شركة حبيب الساعدي للتجارة العامة',
+    founded: 2017,
+    registration: '000007685',
+    headquarters: 'بغداد / النهضة - شارع الظلال',
+    phone: '6505',
+    whatsapp: '+964 773 033 1122',
+    branches: 7,
+    clients: '+4000',
+    social: {
+      facebook: 'https://www.facebook.com/habeebalsaede',
+      instagram: 'https://www.instagram.com/habeeb_alsaedi',
+      youtube: 'https://www.youtube.com/channel/UCKgqKQ1ep2d1wscOc2byZew'
+    },
+    app: {
+      ios: 'https://apps.apple.com/iq/app/حبيب-الساعدي/id1524682895',
+      android: 'https://play.google.com/store/apps/details?id=com.creativeprojects.habeeb'
+    }
+  })
+})
+
+export default app
