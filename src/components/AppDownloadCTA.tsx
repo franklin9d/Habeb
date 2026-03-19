@@ -116,7 +116,7 @@ export default function AppDownloadCTA() {
             </motion.div>
           </div>
 
-          {/* Phone Mockup */}
+          {/* Phone Mockup with Company Logo */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -126,12 +126,52 @@ export default function AppDownloadCTA() {
             <div className="relative">
               <div className="absolute inset-0 bg-brand-green/8 blur-3xl rounded-full scale-125 animate-pulse-glow" />
               <div className="phone-mockup animate-float relative">
-                <Image
-                  src="/images/hero-product.webp"
-                  alt="تطبيق حبيب الساعدي"
-                  fill
-                  className="object-cover"
-                />
+                {/* Phone inner content - company logo centered */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-brand-dark-2 via-brand-dark to-brand-dark-2 z-[1]">
+                  {/* Decorative circles */}
+                  <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-36 h-36 sm:w-44 sm:h-44 rounded-full border border-brand-green/10" />
+                  <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-52 h-52 sm:w-60 sm:h-60 rounded-full border border-brand-green/5" />
+                  
+                  {/* Logo */}
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mb-4">
+                    <Image
+                      src="/images/logo.png"
+                      alt="شعار حبيب الساعدي"
+                      fill
+                      className="object-contain drop-shadow-[0_0_25px_rgba(74,222,64,0.3)]"
+                    />
+                  </div>
+                  
+                  {/* Company name */}
+                  <h3 className="text-sm sm:text-base font-black font-display text-brand-white mb-1">حبيب الساعدي</h3>
+                  <p className="text-[9px] sm:text-[10px] text-brand-green font-medium tracking-wider">للتجارة العامة</p>
+                  
+                  {/* Divider */}
+                  <div className="w-10 h-px bg-gradient-to-r from-transparent via-brand-green/40 to-transparent my-3" />
+                  
+                  {/* Mini features */}
+                  <div className="flex items-center gap-2.5 text-[8px] sm:text-[9px] text-brand-gray">
+                    <span className="flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-brand-green" />
+                      تقسيط
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-brand-green" />
+                      ضمان
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-brand-green" />
+                      توصيل
+                    </span>
+                  </div>
+
+                  {/* Download text */}
+                  <div className="mt-5 sm:mt-6 px-4">
+                    <div className="bg-brand-green/10 border border-brand-green/20 rounded-lg px-3 py-2 text-center">
+                      <p className="text-[9px] sm:text-[10px] text-brand-green font-bold">حمّل التطبيق الآن</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
