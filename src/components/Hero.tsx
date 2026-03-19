@@ -185,66 +185,41 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Hero Visual - Phone Mockup with Logo */}
+          {/* Hero Visual - Company Logo Only */}
           <div className="order-1 lg:order-2 flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="relative"
+              className="relative flex flex-col items-center"
             >
-              {/* Glow */}
-              <div className="absolute inset-0 bg-brand-green/8 blur-3xl rounded-full scale-150 animate-pulse-glow" />
+              {/* Glow behind logo */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-brand-green/8 blur-3xl rounded-full animate-pulse-glow" />
 
-              {/* Phone mockup with logo inside */}
-              <div className="phone-mockup animate-float relative">
-                {/* Phone inner content - company logo centered */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-brand-dark-2 via-brand-dark to-brand-dark-2 z-[1]">
-                  {/* Decorative circles */}
-                  <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border border-brand-green/10" />
-                  <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 rounded-full border border-brand-green/5" />
-                  
-                  {/* Logo */}
-                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 mb-4">
-                    <Image
-                      src="/images/logo.png"
-                      alt="شعار حبيب الساعدي"
-                      fill
-                      className="object-contain drop-shadow-[0_0_25px_rgba(74,222,64,0.3)]"
-                      priority
-                    />
-                  </div>
-                  
-                  {/* Company name */}
-                  <h3 className="text-base sm:text-lg font-black font-display text-brand-white mb-1">حبيب الساعدي</h3>
-                  <p className="text-[10px] sm:text-xs text-brand-green font-medium tracking-wider">للتجارة العامة</p>
-                  
-                  {/* Divider */}
-                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-brand-green/40 to-transparent my-4" />
-                  
-                  {/* Mini features */}
-                  <div className="flex items-center gap-3 text-[9px] sm:text-[10px] text-brand-gray">
-                    <span className="flex items-center gap-1">
-                      <span className="w-1 h-1 rounded-full bg-brand-green" />
-                      تقسيط
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <span className="w-1 h-1 rounded-full bg-brand-green" />
-                      ضمان
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <span className="w-1 h-1 rounded-full bg-brand-green" />
-                      توصيل
-                    </span>
-                  </div>
-                </div>
-              </div>
+              {/* Decorative circles */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full border border-brand-green/10 animate-spin" style={{ animationDuration: "25s" }} />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] rounded-full border border-brand-green/5 animate-spin" style={{ animationDuration: "35s", animationDirection: "reverse" }} />
+
+              {/* Logo */}
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-40 h-40 sm:w-52 sm:h-52 lg:w-64 lg:h-64"
+              >
+                <Image
+                  src="/images/logo.png"
+                  alt="شعار حبيب الساعدي"
+                  fill
+                  className="object-contain drop-shadow-[0_0_40px_rgba(74,222,64,0.35)]"
+                  priority
+                />
+              </motion.div>
 
               {/* Floating badges */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-2 xs:-right-6 top-1/4 glass rounded-xl px-3 py-2 text-[10px] xs:text-xs font-bold text-brand-green shadow-xl"
+                className="absolute -right-4 xs:-right-8 top-1/4 glass rounded-xl px-3 py-2 text-[10px] xs:text-xs font-bold text-brand-green shadow-xl"
               >
                 <span className="flex items-center gap-1.5">
                   <span className="w-5 h-5 rounded-md bg-brand-green/15 flex items-center justify-center">
@@ -257,7 +232,7 @@ export default function Hero() {
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -left-2 xs:-left-6 bottom-1/4 glass rounded-xl px-3 py-2 text-[10px] xs:text-xs font-bold text-brand-green shadow-xl"
+                className="absolute -left-4 xs:-left-8 bottom-1/4 glass rounded-xl px-3 py-2 text-[10px] xs:text-xs font-bold text-brand-green shadow-xl"
               >
                 <span className="flex items-center gap-1.5">
                   <span className="w-5 h-5 rounded-md bg-brand-green/15 flex items-center justify-center">
