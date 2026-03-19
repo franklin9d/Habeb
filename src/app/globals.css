@@ -4,16 +4,41 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
 
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
 :root {
   --brand-green: #4ADE40;
   --brand-green-light: #6EF065;
   --brand-green-dark: #2DB825;
-  --brand-dark: #1C1C1C;
-  --brand-dark-2: #252525;
+  --brand-dark: #0A0A0B;
+  --brand-dark-2: #111113;
+  --brand-dark-3: #1A1A1D;
+  --brand-dark-4: #252528;
+  --brand-dark-5: #2E2E32;
   --font-display: 'Cairo', sans-serif;
   --font-body: 'Tajawal', sans-serif;
+
+  /* Spacing tokens */
+  --section-py-mobile: 4rem;   /* 64px */
+  --section-py-tablet: 5rem;   /* 80px */
+  --section-py-desktop: 7rem;  /* 112px */
+
+  /* Nav heights */
+  --nav-height: 4rem;          /* 64px mobile */
+  --nav-height-desktop: 5rem;  /* 80px desktop */
+  --topbar-height: 2.5rem;     /* 40px */
+  --bottom-bar-height: 4rem;   /* 64px */
+
+  /* Container padding */
+  --container-px-mobile: 1rem;   /* 16px */
+  --container-px-tablet: 1.5rem; /* 24px */
+  --container-px-desktop: 2rem;  /* 32px */
 }
 
+/* ============================================
+   BASE RESET
+   ============================================ */
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +49,7 @@ html {
   direction: rtl;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -33,50 +59,37 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
-/* Custom scrollbar */
+/* ============================================
+   SCROLLBAR
+   ============================================ */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #1C1C1C;
+  background: #0A0A0B;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #4ADE40;
   border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #6EF065;
 }
 
-/* Selection */
+/* ============================================
+   SELECTION
+   ============================================ */
 ::selection {
-  background: rgba(74, 222, 64, 0.3);
+  background: rgba(74, 222, 64, 0.25);
   color: #fff;
 }
 
-/* Smooth scroll for lenis */
-html.lenis, html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-/* Text gradient utility */
+/* ============================================
+   TEXT UTILITIES
+   ============================================ */
 .text-gradient-green {
   background: linear-gradient(135deg, #4ADE40 0%, #6EF065 50%, #2DB825 100%);
   -webkit-background-clip: text;
@@ -84,78 +97,103 @@ html.lenis, html.lenis body {
   background-clip: text;
 }
 
-/* Glow effects */
+.text-gradient-white {
+  background: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   GLOW EFFECTS
+   ============================================ */
 .glow-green {
-  box-shadow: 0 0 20px rgba(74, 222, 64, 0.3), 0 0 60px rgba(74, 222, 64, 0.1);
+  box-shadow: 0 0 20px rgba(74, 222, 64, 0.25), 0 0 60px rgba(74, 222, 64, 0.08);
 }
-
 .glow-green-sm {
-  box-shadow: 0 0 10px rgba(74, 222, 64, 0.2), 0 0 30px rgba(74, 222, 64, 0.05);
+  box-shadow: 0 0 10px rgba(74, 222, 64, 0.15), 0 0 30px rgba(74, 222, 64, 0.05);
 }
-
 .glow-green-text {
-  text-shadow: 0 0 20px rgba(74, 222, 64, 0.5), 0 0 40px rgba(74, 222, 64, 0.2);
+  text-shadow: 0 0 20px rgba(74, 222, 64, 0.4), 0 0 40px rgba(74, 222, 64, 0.15);
 }
 
-/* Glass effect */
+/* ============================================
+   GLASS MORPHISM
+   ============================================ */
 .glass {
-  background: rgba(28, 28, 28, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(74, 222, 64, 0.1);
+  background: rgba(10, 10, 11, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
-
 .glass-light {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.glass-card {
+  background: rgba(17, 17, 19, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Grid pattern overlay */
+/* ============================================
+   PATTERNS
+   ============================================ */
 .grid-pattern {
-  background-image: 
-    linear-gradient(rgba(74, 222, 64, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74, 222, 64, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image:
+    linear-gradient(rgba(74, 222, 64, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 64, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-/* Noise texture overlay */
+.dot-pattern {
+  background-image: radial-gradient(circle, rgba(74, 222, 64, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ============================================
+   NOISE OVERLAY
+   ============================================ */
 .noise-overlay::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1;
 }
 
-/* Gradient border */
+/* ============================================
+   GRADIENT BORDERS
+   ============================================ */
 .border-gradient {
   position: relative;
 }
-
 .border-gradient::before {
   content: '';
   position: absolute;
   inset: 0;
   padding: 1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(74, 222, 64, 0.3), transparent, rgba(74, 222, 64, 0.1));
+  background: linear-gradient(135deg, rgba(74, 222, 64, 0.25), transparent, rgba(74, 222, 64, 0.08));
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   pointer-events: none;
 }
 
-/* Animated line */
+/* ============================================
+   ANIMATED LINES
+   ============================================ */
 @keyframes line-flow {
   0% { background-position: 0% 0%; }
   100% { background-position: 200% 0%; }
 }
-
 .animated-line {
-  height: 2px;
+  height: 1px;
   background: linear-gradient(90deg, transparent, #4ADE40, transparent);
   background-size: 200% 100%;
   animation: line-flow 3s linear infinite;
@@ -164,25 +202,121 @@ html.lenis, html.lenis body {
 /* Section divider */
 .section-divider {
   height: 1px;
-  background: linear-gradient(to left, transparent, rgba(74, 222, 64, 0.2), transparent);
+  background: linear-gradient(to left, transparent, rgba(74, 222, 64, 0.15), transparent);
 }
 
-/* Image mask reveal animation */
-@keyframes mask-reveal {
-  from {
-    clip-path: inset(0 100% 0 0);
+/* ============================================
+   PHONE MOCKUP
+   ============================================ */
+.phone-mockup {
+  position: relative;
+  width: 240px;
+  height: 490px;
+  border-radius: 36px;
+  border: 3px solid rgba(255,255,255,0.1);
+  background: #111113;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05),
+    0 25px 50px -12px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  overflow: hidden;
+}
+.phone-mockup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 28px;
+  background: #111113;
+  border-radius: 0 0 16px 16px;
+  z-index: 10;
+}
+
+@media (min-width: 640px) {
+  .phone-mockup {
+    width: 280px;
+    height: 572px;
+    border-radius: 40px;
   }
-  to {
-    clip-path: inset(0 0 0 0);
+}
+
+@media (min-width: 1024px) {
+  .phone-mockup {
+    width: 300px;
+    height: 614px;
+    border-radius: 44px;
   }
 }
 
-.mask-reveal {
-  animation: mask-reveal 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+/* ============================================
+   SAFE AREAS FOR iOS
+   ============================================ */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
 
+/* ============================================
+   LENIS SMOOTH SCROLL
+   ============================================ */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ============================================
+   UTILITY LAYERS
+   ============================================ */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .tap-highlight-none {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ============================================
+   MASK REVEAL ANIMATION
+   ============================================ */
+@keyframes mask-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+.mask-reveal {
+  animation: mask-reveal 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+/* ============================================
+   RESPONSIVE SECTION PADDING
+   On mobile (320-430px): py-16 (64px)
+   On tablet (768-1024px): py-20 (80px)
+   On desktop (1280+): py-28 (112px)
+   ============================================ */
+.section-padding {
+  padding-top: var(--section-py-mobile);
+  padding-bottom: var(--section-py-mobile);
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: var(--section-py-tablet);
+    padding-bottom: var(--section-py-tablet);
+  }
+}
+@media (min-width: 1280px) {
+  .section-padding {
+    padding-top: var(--section-py-desktop);
+    padding-bottom: var(--section-py-desktop);
   }
 }
