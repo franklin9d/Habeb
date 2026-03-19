@@ -2,14 +2,16 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const IraqMap = dynamic(() => import("./IraqMap"), { ssr: false });
 
 /**
  * Branches - Coverage map section
  *
- * Mobile: vertical list of branches
- * Tablet: 2-column list + image
- * Desktop: text+list left, image right (RTL)
+ * Mobile: vertical list of branches + Iraq map
+ * Tablet: 2-column list + map
+ * Desktop: text+list left, interactive Iraq map right (RTL)
  */
 const branches = [
   { name: "بغداد - النهضة", type: "الفرع الرئيسي" },
@@ -28,6 +30,7 @@ export default function Branches() {
   return (
     <section ref={sectionRef} id="branches" className="relative section-padding overflow-hidden">
       <div className="absolute inset-0 bg-brand-dark" />
+      <div className="absolute inset-0 grid-pattern opacity-5" />
       <div className="absolute top-0 left-0 right-0 section-divider" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
@@ -91,41 +94,14 @@ export default function Branches() {
             </div>
           </div>
 
-          {/* Image Side */}
+          {/* Map Side */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="relative"
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <Image
-                src="/images/cityscape.jpg"
-                alt="فروع شركة حبيب الساعدي في العراق"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 to-transparent" />
-              <div className="absolute inset-0 bg-brand-green/5" />
-            </div>
-
-            {/* Decorative frame */}
-            <div className="absolute -top-3 -right-3 w-full h-full border border-brand-green/10 rounded-2xl -z-10 hidden lg:block" />
-
-            {/* Floating badge */}
-            <div className="absolute -bottom-4 left-4 sm:left-8 glass rounded-xl px-5 py-3 glow-green-sm">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-brand-green/15 flex items-center justify-center">
-                  <svg className="w-4 h-4 text-brand-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div>
-                  <span className="block text-base font-black text-brand-green">7 فروع</span>
-                  <span className="text-[10px] text-brand-gray">في العراق</span>
-                </div>
-              </div>
-            </div>
+            <IraqMap />
           </motion.div>
         </div>
       </div>

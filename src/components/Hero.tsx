@@ -185,7 +185,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Hero Visual - Logo Showcase */}
+          {/* Hero Visual - Phone Mockup with Logo */}
           <div className="order-1 lg:order-2 flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: 30 }}
@@ -196,15 +196,48 @@ export default function Hero() {
               {/* Glow */}
               <div className="absolute inset-0 bg-brand-green/8 blur-3xl rounded-full scale-150 animate-pulse-glow" />
 
-              {/* Logo showcase */}
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 animate-float">
-                <Image
-                  src="/images/logo.png"
-                  alt="شعار حبيب الساعدي"
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                  priority
-                />
+              {/* Phone mockup with logo inside */}
+              <div className="phone-mockup animate-float relative">
+                {/* Phone inner content - company logo centered */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-brand-dark-2 via-brand-dark to-brand-dark-2 z-[1]">
+                  {/* Decorative circles */}
+                  <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border border-brand-green/10" />
+                  <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 rounded-full border border-brand-green/5" />
+                  
+                  {/* Logo */}
+                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 mb-4">
+                    <Image
+                      src="/images/logo.png"
+                      alt="شعار حبيب الساعدي"
+                      fill
+                      className="object-contain drop-shadow-[0_0_25px_rgba(74,222,64,0.3)]"
+                      priority
+                    />
+                  </div>
+                  
+                  {/* Company name */}
+                  <h3 className="text-base sm:text-lg font-black font-display text-brand-white mb-1">حبيب الساعدي</h3>
+                  <p className="text-[10px] sm:text-xs text-brand-green font-medium tracking-wider">للتجارة العامة</p>
+                  
+                  {/* Divider */}
+                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-brand-green/40 to-transparent my-4" />
+                  
+                  {/* Mini features */}
+                  <div className="flex items-center gap-3 text-[9px] sm:text-[10px] text-brand-gray">
+                    <span className="flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-brand-green" />
+                      تقسيط
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-brand-green" />
+                      ضمان
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-brand-green" />
+                      توصيل
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Floating badges */}
