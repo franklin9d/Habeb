@@ -2,17 +2,20 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const navLinks = [
-  { label: "المجموعات", href: "#collections" },
-  { label: "العطور", href: "#products" },
-  { label: "قصتنا", href: "#story" },
-  { label: "المتجر", href: "#shop" },
+  { label: "الرئيسية", href: "#hero" },
+  { label: "من نحن", href: "#about" },
+  { label: "خدماتنا", href: "#services" },
+  { label: "منتجاتنا", href: "#products" },
+  { label: "فروعنا", href: "#branches" },
+  { label: "تواصل معنا", href: "#contact" },
 ];
 
-export function Header() {
+export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -25,118 +28,133 @@ export function Header() {
       <motion.header
         initial={{ y: -80 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           scrolled
-            ? "bg-luxe-black/80 backdrop-blur-xl border-b border-white/5"
+            ? "bg-brand-dark/90 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-brand-green/10"
             : "bg-transparent"
         }`}
+        style={{ top: scrolled ? 0 : undefined }}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group">
-              <div className="relative">
-                <div className="w-10 h-10 border border-luxe-gold/60 rotate-45 group-hover:rotate-[135deg] transition-transform duration-700" />
-                <div className="absolute inset-0 w-10 h-10 border border-luxe-gold/30 rotate-45 scale-75" />
+            <a href="#hero" className="flex items-center gap-3 group">
+              <div className="relative w-12 h-12 transition-transform duration-300 group-hover:scale-110">
+                <Image
+                  src="/images/logo.png"
+                  alt="شركة حبيب الساعدي"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
-              <span className="font-display text-2xl font-bold text-gold-gradient tracking-tight">
-                ذهب
-              </span>
+              <div className="hidden sm:block">
+                <h1 className="text-lg font-bold font-display leading-tight text-brand-white group-hover:text-brand-green transition-colors">
+                  حبيب الساعدي
+                </h1>
+                <p className="text-[10px] text-brand-gray-light tracking-wider">للتجارة العامة</p>
+              </div>
             </a>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-10">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
+            <nav className="hidden lg:flex items-center gap-1">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.href}
                   href={link.href}
-                  className="relative text-sm text-luxe-silver hover:text-luxe-white transition-colors duration-300 font-body group"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + i * 0.05 }}
+                  className="relative px-4 py-2 text-sm font-medium text-brand-gray-light hover:text-brand-green transition-colors group"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 right-0 w-0 h-px bg-luxe-gold transition-all duration-300 group-hover:w-full" />
-                </a>
+                  <span className="absolute bottom-0 right-0 w-0 h-0.5 bg-brand-green transition-all duration-300 group-hover:w-full rounded-full" />
+                </motion.a>
               ))}
             </nav>
 
-            {/* Actions */}
-            <div className="hidden lg:flex items-center gap-6">
-              <button className="text-sm text-luxe-silver hover:text-luxe-white transition-colors">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                </svg>
-              </button>
-              <button className="text-sm text-luxe-silver hover:text-luxe-white transition-colors relative">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                </svg>
-                <span className="absolute -top-1 -left-1 w-4 h-4 bg-luxe-gold rounded-full text-[10px] text-luxe-black font-bold flex items-center justify-center">
-                  ٢
-                </span>
-              </button>
-              <a
-                href="#shop"
-                className="btn-premium px-6 py-2.5 bg-luxe-gold text-luxe-black text-sm font-bold font-display rounded-sm hover:bg-luxe-gold-light transition-colors"
+            {/* CTA + Mobile Toggle */}
+            <div className="flex items-center gap-3">
+              <motion.a
+                href="#contact"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5 }}
+                className="hidden md:inline-flex items-center gap-2 bg-brand-green hover:bg-brand-green-light text-brand-dark font-bold text-sm px-5 py-2.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-brand-green/20"
               >
-                اكتشف المجموعة
-              </a>
-            </div>
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                اتصل بنا
+              </motion.a>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5"
-            >
-              <motion.span
-                animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                className="block w-6 h-px bg-luxe-white origin-center transition-colors"
-              />
-              <motion.span
-                animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
-                className="block w-6 h-px bg-luxe-white transition-colors"
-              />
-              <motion.span
-                animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                className="block w-6 h-px bg-luxe-white origin-center transition-colors"
-              />
-            </button>
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden flex flex-col items-center justify-center w-10 h-10 rounded-lg border border-brand-dark-4 hover:border-brand-green/30 transition-colors"
+              >
+                <span className={`block w-5 h-0.5 bg-brand-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+                <span className={`block w-5 h-0.5 bg-brand-white mt-1 transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`block w-5 h-0.5 bg-brand-white mt-1 transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+              </button>
+            </div>
           </div>
         </div>
       </motion.header>
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {menuOpen && (
+        {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-30 bg-luxe-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 lg:hidden"
           >
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -30, opacity: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                onClick={() => setMenuOpen(false)}
-                className="text-3xl font-display text-luxe-white hover:text-luxe-gold transition-colors"
-              >
-                {link.label}
-              </motion.a>
-            ))}
-            <motion.a
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              href="#shop"
-              onClick={() => setMenuOpen(false)}
-              className="mt-4 btn-premium px-10 py-3 bg-luxe-gold text-luxe-black font-bold font-display text-lg rounded-sm"
-            >
-              تسوّق الآن
-            </motion.a>
+            <div className="absolute inset-0 bg-black/60" onClick={() => setMobileMenuOpen(false)} />
+            <div className="absolute top-0 left-0 w-72 h-full bg-brand-dark border-l border-brand-green/10 p-6 overflow-y-auto">
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="relative w-10 h-10">
+                    <Image src="/images/logo.png" alt="شركة حبيب الساعدي" fill className="object-contain" />
+                  </div>
+                  <span className="font-bold font-display text-brand-green">حبيب الساعدي</span>
+                </div>
+                <button onClick={() => setMobileMenuOpen(false)} className="text-brand-gray-light hover:text-brand-white">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <nav className="flex flex-col gap-1">
+                {navLinks.map((link, i) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="px-4 py-3 rounded-lg text-brand-gray-light hover:text-brand-green hover:bg-brand-green/5 transition-all font-medium"
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </nav>
+              <div className="mt-8 pt-6 border-t border-brand-dark-4">
+                <a
+                  href="tel:6505"
+                  className="flex items-center justify-center gap-2 bg-brand-green text-brand-dark font-bold py-3 rounded-lg hover:bg-brand-green-light transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  اتصل بنا: 6505
+                </a>
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
