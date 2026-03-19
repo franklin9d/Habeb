@@ -24,6 +24,7 @@ function AnimatedCounter({
   duration?: number;
   suffix?: string;
   prefix?: string;
+  noFormat?: boolean;
 }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -44,7 +45,7 @@ function AnimatedCounter({
 
   return (
     <span ref={ref}>
-      {prefix}{count.toLocaleString("ar-SA")}{suffix}
+      {prefix}{target === 2017 ? count.toString() : count.toLocaleString("ar-SA")}{suffix}
     </span>
   );
 }

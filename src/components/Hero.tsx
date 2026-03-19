@@ -175,7 +175,7 @@ export default function Hero() {
               {[
                 { value: "+4,000", label: "عميل" },
                 { value: "7", label: "فروع" },
-                { value: "2017", label: "التأسيس" },
+                { value: "2017", label: "\u0627\u0644\u062a\u0623\u0633\u064a\u0633" },
               ].map((item, i) => (
                 <div key={i} className="text-center">
                   <span className="block text-xl sm:text-2xl font-black font-display text-brand-green">{item.value}</span>
@@ -185,7 +185,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Hero Visual - Phone Mockup */}
+          {/* Hero Visual - Logo Showcase */}
           <div className="order-1 lg:order-2 flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.85, y: 30 }}
@@ -196,16 +196,15 @@ export default function Hero() {
               {/* Glow */}
               <div className="absolute inset-0 bg-brand-green/8 blur-3xl rounded-full scale-150 animate-pulse-glow" />
 
-              {/* Phone mockup */}
-              <div className="phone-mockup animate-float relative">
+              {/* Logo showcase */}
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 animate-float">
                 <Image
-                  src="/images/hero-product.webp"
-                  alt="تطبيق حبيب الساعدي"
+                  src="/images/logo.png"
+                  alt="شعار حبيب الساعدي"
                   fill
-                  className="object-cover"
+                  className="object-contain drop-shadow-2xl"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 to-transparent" />
               </div>
 
               {/* Floating badges */}
